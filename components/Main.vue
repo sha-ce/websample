@@ -11,6 +11,7 @@
   margin: 0;
   padding: 0;
   width: 100%;
+  background: ghostwhite;
 }
 .title {
   font-size: max(32px, 20vw);

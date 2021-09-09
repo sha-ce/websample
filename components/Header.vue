@@ -10,9 +10,11 @@
 .wrap {
   margin: auto 0;
   padding: 15px 0;
+  background: ghostwhite;
   box-shadow: 1px 0 4px 3px lightgray;
   position: fixed;
   width: 100%;
+  z-index: 50;
 }
 .title {
   text-align: center;
