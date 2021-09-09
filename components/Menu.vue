@@ -70,7 +70,7 @@
           </ul>
         </div>
     </transition>
-    <div v-if="ActiveBtn" @click="ActiveBtn=!ActiveBtn"/>
+    <div v-if="ActiveBtn" class="close-area" @click="ActiveBtn=!ActiveBtn"/>
   </div>
 </template>
 
@@ -127,12 +127,12 @@ p {
   transition: 0.5s ease;
 }
 .close-button {
-  background: #eeeeee;
+  background: #efefef;
   border-radius: 10px/10px;
   position: fixed;
   left: 10px;
   transition: 0.5s ease;
-  box-shadow: 0 1px 3px 2px #aaaaaa;
+  box-shadow: 0 1px 3px 2px #dfdfdf;
 }
 /* ↑ボタンアニメーション */
 
@@ -140,15 +140,15 @@ p {
   margin: 0;
   padding: 10px 0 0 40px;
   position: fixed;
-  top: 80px;
+  top: 90px;
   left: 10px;
   /*height: 60%;*/
   display: inherit;
-  background: #eeeeee;
+  background: #efefef;
   pointer-events: auto;
   flex-direction: column;
   border-radius: 20px/20px;
-  box-shadow: 0 1px 3px 2px #aaaaaa;
+  box-shadow: 0 1px 3px 2px #dfdfdf;
   z-index: 99;
 }
 .fade-enter-active, .fade-leave-active {

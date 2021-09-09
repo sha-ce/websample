@@ -1,0 +1,21 @@
+<template>
+  <div class="wrap">
+    <div class="copywrite">
+      ©ko_suke
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.wrap {
+  margin: auto 0;
+  padding: 5px 0;
+  background: gray;
+}
+.copywrite {
+  text-align: center;
+  font-size: 16px;
+  color: whitesmoke;
+  font: bold;
+}
+</style>
