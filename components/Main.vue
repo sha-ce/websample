@@ -10,9 +10,10 @@
 .wrap {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 .title {
-  font-size: 16rem;
+  font-size: max(32px, 20vw);
   color: gray;
   height: 100vh;
   /* 中央寄せ */

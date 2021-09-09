@@ -10,6 +10,7 @@
 .wrap {
   margin: auto 0;
   padding: 5px 0;
+  width: 100%;
   background: gray;
 }
 .copywrite {
