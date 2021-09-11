@@ -87,7 +87,8 @@
   padding: min(20px, 2vw) min(40px, 3.8vw);
   text-decoration: none;
   color: gray;
-  border: min(2px, 0.1vw) solid gray;
+  border: solid gray;
+  border-width: 0.1vw;
   border-radius: 50px;
   display: inline;
   white-space: nowrap;
