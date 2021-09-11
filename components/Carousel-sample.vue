@@ -1,34 +1,38 @@
 <template>
   <div class="carousel-wrap">
     <div class="carousel-outer">
-      <ul class="carousel-inner">
-        <li>
-          <transition :name="transName">
+      <transition-group 
+        :name="transName" 
+        class="carousel-inner-wrap"
+        tag="ul"
+      >
+        <li 
+          v-for="(slide, idx) in slides"
+          v-show="currentSlide == idx"
+          :key="idx"
+          class="carousel-inner"
+        >
           <img 
-            v-for="(slide, index) in slides"
-            v-show="currentSlide == index"
-            :key="index"
-            :src="slides[index].img"
+            :src="slides[idx].img"
           />
-          </transition>
         </li>
-      </ul>
+      </transition-group>
       <div class="button-wrap">
-        <button class="button button-prev" @click="prev()">＜</button>
-        <button class="button button-next" @click="next()">＞</button>
+        <button class="button button-prev" @click="prev(1)">＜</button>
+        <button class="button button-next" @click="next(1)">＞</button>
       </div>
     </div>
     <div class="carousel-dots-wrap">
       <div class="carousel-dots">
         <ul>
           <li 
-            v-for="(slide, index) in slides"
-            :key="index"
+            v-for="(slide, idx) in slides"
+            :key="idx"
             >
             <button
-              :class="{ 'carousel-dot-active': currentSlide == index }"
+              :class="{ 'carousel-dot-active': currentSlide == idx }"
               class="carousel-dot"
-              @click="currentSlide = index"
+              @click="animation(idx)"
             />
           </li>
         </ul>
@@ -42,7 +46,9 @@ export default {
   data() {
     return {
       transName: null,
+      prevSlide: 4,
       currentSlide: 0,
+      nextSlide: 1,
       slides: [
         { img: '/carousel_1.png' },
         { img: '/carousel_2.png' },
@@ -53,18 +59,29 @@ export default {
     }
   },
   methods: {
-    prev() {
+    prev(decre) {
       this.transName = 'prev'
-      this.currentSlide--
+      this.currentSlide-=decre
       if (this.currentSlide === -1) {
-        this.currentSlide = this.slides.length - 1
+        this.prevSlide = 3
+        this.currentSlide = 4
+        this.nextSlide = 0
       }
     },
-    next() {
+    next(incre) {
       this.transName = 'next'
-      this.currentSlide++
-      if (this.currentSlide === this.slides.length) {
+      this.currentSlide+=incre
+      if (this.currentSlide === 5) {
+        this.prevSlide = 4
         this.currentSlide = 0
+        this.nextSlide = 1
+      }
+    },
+    animation(idx) {
+      if(idx >= this.currentSlide) {
+        return this.next(idx - this.currentSlide)
+      } else {
+        return this.prev(this.currentslide - idx)
       }
     },
   },
@@ -85,13 +102,15 @@ export default {
   text-align: center;
   background: white;
 }
-.carousel-inner {
+.carousel-inner-wrap {
   white-space: nowrap;
 }
-.carousel-inner li {
+.carousel-inner {
+  width: 550px;
+  height: 300px;
   display: inline-block;
 }
-.carousel-inner li img {
+.carousel-inner img {
   width: 550px;
   height: 300px;
   border-radius: 50px;
@@ -153,12 +172,29 @@ export default {
 /* -------------------------------- */
 /* 以下 Vue.js で使用するクラスの定義 */
 /* -------------------------------- */
-.next-enter, .prev-leave-to {
-  transition: 0.5s ease;
-  transform: translateX(550px);
+.next-enter-active,
+.next-leave-active,
+.prev-enter-active,
+.prev-leave-active {
+  transition: all 0.8s ease;
 }
-.next-leave-to, .prev-enter {
-  transition: 0.5s ease;
-  transform: translateX(-550px);
+.next-leave-to {
+  transform: translatex(-100%);
 }
+.next-enter {
+  transform: translateX(100%);
+}
+.next-enter-active {
+  transform: translateX(-100%);
+}
+.prev-enter {
+  transform: translateX(100%);
+}
+.prev-leave-active {
+  transform: translateX(0);
+}
+.prev-enter-to {
+  transform: translateX(0);
+}
+
 </style>
