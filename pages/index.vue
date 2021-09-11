@@ -3,6 +3,7 @@
     <Header/>
     <Menu/>
     <TopTop/>
+    <Carousel/>
     <Main/>
     <Footer/>
   </div>
@@ -14,9 +15,10 @@ import Header from '../components/Header.vue';
 import Main from '../components/Main.vue';
 import Footer from '../components/Footer.vue';
 import TopTop from '../components/topTop.vue';
+import Carousel from '../components/Carousel-sample.vue';
 
 export default {
-  components: { Header, Menu, Main, Footer, TopTop },
+  components: { Header, Menu, Main, Footer, TopTop, Carousel },
 }
 </script>
 
