@@ -182,10 +182,10 @@ export default {
   transform: translatex(-100%);
 }
 .next-enter {
-  transform: translateX(100%);
+  transform: translateX(0);
 }
 .next-enter-active {
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }
 .prev-enter {
   transform: translateX(100%);
