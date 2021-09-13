@@ -7,7 +7,7 @@
           :key="idx"
           class="carousel-inner"
         >
-          <a :href="idx" >
+          <a :href="links[idx].src" >
             <img :src="slides[idx].img"/>
           </a>
         </slide>
@@ -43,12 +43,19 @@ export default {
         { img: '/carousel_4.png' },
         { img: '/carousel_5.png' }
       ],
+      links: [
+        { src: '#1' },
+        { src: '#2' },
+        { src: '#3' },
+        { src: '#4' },
+        { src: '#5' },
+      ],
       hooperSettings: {
         infiniteScroll: true,
         centerMode: true,
         keysControl: false,
         autoPlay: true,
-        playSpeed: 4000,
+        playSpeed: 5000,
         transition: 800
       },
     }
@@ -66,59 +73,70 @@ export default {
   width: 100%;
 }
 .carousel-outer {
-  width: 900px;
-  height: 700px;
+  width: min(900px, 47vw);
+  height: min(700px, 37vw);
+  border-radius: 25px/25px;
+  box-shadow: 8px 6px 6px lightgray;
   margin: 0 auto;
   text-align: center;
   background: white;
 }
+.carousel-inner {
+  position: relative;
+  width: min(900px, 47vw);
+  height: min(700px, 37vw);
+  display: inline-block;
+}
+.carousel-inner img {
+  width: min(900px, 47vw);
+  height: min(700px, 37vw);
+  border-radius: 25px/25px;
+  border: solid 1px rgb(200, 200, 255);
+  object-fit: cover;
+}
+</style>
+
+<style>/* scopedされてないけどそうじゃないとデフォルトのままなんだ */
 .hooper {
   width: 900px;
   height: 700px;
 }
-.hooper li {
-  width: 30px;
-  height: 30px;
+.hooper-list {
+  border-radius: 25px/25px;
 }
-.carousel-inner {
-  position: relative;
-  width: 900px;
-  height: 700px;
-  display: inline-block;
+.hooper-pagination {
+  bottom: -30px;
 }
-.carousel-inner img {
-  width: 900px;
-  height: 700px;
-  border-radius: 30px;
-  border: solid 1px rgb(200, 200, 255);
-  object-fit: cover;
-}
-.carousel-dots-wrap {
-  width: 100%;
-  height: auto;
-}
-.carousel-dots ul {
-  width: 150px;
-  margin: 0 auto;
-  padding: 0 auto;
-  display: flex;
-}
-.carousel-dots li {
-  list-style: none;
-}
-.carousel-dot {
-  margin: 0 10px;
+.hooper-indicator {
+  margin: 0 20px;
   padding: 0;
-  width: 10px;
-  height: 10px;
-  cursor: pointer;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: gray;
-  display: inline-flex;
   opacity: 0.3;
-  border: none;
 }
-.carousel-dot-active {
-  opacity: 0.8;
+.hooper-indicator:hover, .hooper-indicator .is-active {
+  background: gray;
+  opacity: 0.6;
+  transition: 0.3s ease;
+}
+.hooper-indicator.is-active {
+  background: gray;
+  opacity: 0.9;
+}
+.hooper-next, .hooper-prev {
+  margin: 10px;
+  padding: 5px;
+  background: lightgray;
+  opacity: 0.2;
+  border-radius: 50%;
+}
+.hooper-next:hover, .hooper-prev:hover {
+  margin: 10px;
+  background: lightgray;
+  opacity: 0.5;
+  border-radius: 50%;
+  transition: 0.3s ease;
 }
 </style>
