@@ -84,32 +84,4 @@ export default {
   border-radius: 30px;
   border: solid 1px rgb(200, 200, 255);
 }
-.carousel-dots-wrap {
-  width: 100%;
-  height: auto;
-}
-.carousel-dots ul {
-  width: 150px;
-  margin: 0 auto;
-  padding: 0 auto;
-  display: flex;
-}
-.carousel-dots li {
-  list-style: none;
-}
-.carousel-dot {
-  margin: 0 10px;
-  padding: 0;
-  width: 10px;
-  height: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  background: gray;
-  display: inline-flex;
-  opacity: 0.3;
-  border: none;
-}
-.carousel-dot-active {
-  opacity: 0.8;
-}
 </style>
