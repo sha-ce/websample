@@ -36,6 +36,7 @@
   background: white;
   color: gray;
   display: flex;
+  width: 100vw;
   height: cal(100vh - 80px/* ヘッダーの高さ */);
   font-family: 'Inter';
 }

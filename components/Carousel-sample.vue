@@ -12,14 +12,12 @@
           :key="idx"
           class="carousel-inner"
         >
-          <img 
-            :src="slides[idx].img"
-          />
+          <img :src="slides[idx].img"/>
         </li>
       </transition-group>
       <div class="button-wrap">
-        <button class="button button-prev" @click="prev(1)">＜</button>
-        <button class="button button-next" @click="next(1)">＞</button>
+        <button class="button button-prev" @click="prev()">＜</button>
+        <button class="button button-next" @click="next()">＞</button>
       </div>
     </div>
     <div class="carousel-dots-wrap">
@@ -46,42 +44,36 @@ export default {
   data() {
     return {
       transName: null,
-      prevSlide: 4,
       currentSlide: 0,
-      nextSlide: 1,
       slides: [
         { img: '/carousel_1.png' },
         { img: '/carousel_2.png' },
         { img: '/carousel_3.png' },
         { img: '/carousel_4.png' },
-        { img: '/carousel_5.png' }
-      ],
+        { img: '/carousel_5.png' },
+      ]
     }
   },
   methods: {
-    prev(decre) {
+    prev() {
       this.transName = 'prev'
-      this.currentSlide-=decre
+      this.currentSlide--
       if (this.currentSlide === -1) {
-        this.prevSlide = 3
         this.currentSlide = 4
-        this.nextSlide = 0
       }
     },
-    next(incre) {
+    next() {
       this.transName = 'next'
-      this.currentSlide+=incre
-      if (this.currentSlide === 5) {
-        this.prevSlide = 4
+      this.currentSlide++
+      if(this.currentSlide === 5) {
         this.currentSlide = 0
-        this.nextSlide = 1
       }
     },
     animation(idx) {
       if(idx >= this.currentSlide) {
         return this.next(idx - this.currentSlide)
       } else {
-        return this.prev(this.currentslide - idx)
+        return this.prev(this.currentSlide - idx)
       }
     },
   },
@@ -106,6 +98,7 @@ export default {
   white-space: nowrap;
 }
 .carousel-inner {
+  position: relative;
   width: 550px;
   height: 300px;
   display: inline-block;
@@ -146,7 +139,6 @@ export default {
 }
 .button-wrap {
   text-align: center;
-  position: absolute;
   left: 36.7%;
   bottom: -230px;
 }
@@ -170,7 +162,7 @@ export default {
   text-align: right;
 }
 /* -------------------------------- */
-/* 以下 Vue.js で使用するクラスの定義 */
+/* アニメーション */
 /* -------------------------------- */
 .next-enter-active,
 .next-leave-active,
@@ -184,17 +176,19 @@ export default {
 .next-enter {
   transform: translateX(0);
 }
-.next-enter-active {
-  transform: translateX(100%);
+.next-enter-to {
+  transform: translateX(-100%);
 }
 .prev-enter {
-  transform: translateX(100%);
-}
-.prev-leave-active {
-  transform: translateX(0);
+  transform: translateX(-100%);
 }
 .prev-enter-to {
   transform: translateX(0);
 }
-
+.prev-leave {
+  transform: translateX(0);
+}
+.prev-leave-to {
+  transform: translateX(100%);
+}
 </style>

@@ -4,21 +4,19 @@
     <Menu/>
     <TopTop/>
     <Carousel/>
-    <Main/>
-    <Footer/>
+    <Carouselhooper/>
   </div>
 </template>
 
 <script>
 import Menu from '../components/Menu.vue';
 import Header from '../components/Header.vue';
-import Main from '../components/Main.vue';
-import Footer from '../components/Footer.vue';
 import TopTop from '../components/topTop.vue';
 import Carousel from '../components/Carousel-sample.vue';
+import Carouselhooper from '../components/Carousel-hooper.vue';
 
 export default {
-  components: { Header, Menu, Main, Footer, TopTop, Carousel },
+  components: { Header, Menu, TopTop, Carousel, Carouselhooper },
 }
 </script>
 
