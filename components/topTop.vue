@@ -194,8 +194,11 @@ export default {
 </style>
 <style>/* scopedされてないけどそうじゃないとデフォルトのままなんだ */
 .hooper {
-  width: 900px;
-  height: 700px;
+  margin: 0;
+  padding: 0;
+  width: min(900px, 47vw);
+  height: min(700px, 37vw);
+  border-radius: 25px/25px;
 }
 .hooper-list {
   border-radius: 25px/25px;
