@@ -14,8 +14,8 @@
 import Menu from '../components/Menu.vue';
 import Header from '../components/Header.vue';
 import TopTop from '../components/topTop.vue';
-import Main from '../components/topTop.vue';
-import Footer from '../components/topTop.vue';
+import Main from '../components/Main.vue';
+import Footer from '../components/Footer.vue';
 import Carousel from '../components/Carousel-sample.vue';
 import Carouselhooper from '../components/Carousel-hooper.vue';
 
