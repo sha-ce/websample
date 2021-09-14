@@ -13,11 +13,11 @@
               お知らせ
             </div>
             <div class="all-news-link">
-              <a href="#allnews">一覧を見る</a>
+              <a :href="allNewsLink">一覧を見る</a>
             </div>
           </div>
           <div class="top-news">
-            <a href="#topnews">
+            <a :href="topNewsLink">
               {{ news }}
             </a>
           </div>
@@ -30,7 +30,7 @@
               v-for="(slide, idx) in slides"
               :key="idx"
             >
-              <a :href="links[idx].src" >
+              <a :href="slideLinks[idx].src" >
                 <img :src="slides[idx].img"/>
               </a>
             </slide>
@@ -69,18 +69,20 @@ export default {
         { img: '/carousel_4.png' },
         { img: '/carousel_5.png' }
       ],
-      links: [
+      slideLinks: [
         { src: '#1' },
         { src: '#2' },
         { src: '#3' },
         { src: '#4' },
         { src: '#5' },
       ],
+      allNewsLink: '#allnews',
+      topNewsLink: '#topnews',
       hooperSettings: {
         infiniteScroll: true,
         centerMode: true,
         keysControl: false,
-        autoPlay: false,
+        autoPlay: true,
         playSpeed: 5000,
         transition: 800
       },
@@ -90,6 +92,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
 .wrap {
   margin: 0;
   padding: 80px/*ヘッダーの高さ*/ 0 50px 0;
@@ -98,7 +102,7 @@ export default {
   display: flex;
   width: cal(1920px);
   height: cal(100vh - 80px/* ヘッダーの高さ */);
-  font-family: 'Inter';
+  font-family: 'Inter', 'Noto Sans JP';
 }
 /* タイトル */
 .top-title {
@@ -145,6 +149,7 @@ export default {
 }
 .top-news a {
   margin: 0;
+  font-family: 'Noto Sans JP';
   padding: min(20px, 2vw) min(40px, 3.8vw);
   text-decoration: none;
   color: gray;
@@ -183,9 +188,6 @@ export default {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-.hooper * {
-  box-sizing: unset;
-}
 .hooper img {
   width: min(900px, 47vw);
   height: min(700px, 37vw);
@@ -218,17 +220,15 @@ export default {
   opacity: 0.9;
 }
 ::v-deep .hooper-next, ::v-deep .hooper-prev {
-  margin: 10px;
+  margin: 0 10px;
   padding: 5px;
-  background: transparent;
+  background: ghostwhite;
   opacity: 0.2;
   border-radius: 50%;
 }
 ::v-deep .hooper-next:hover, ::v-deep .hooper-prev:hover {
-  margin: 10px;
-  background: white;
+  background: ghostwhite;
   opacity: 0.5;
-  border-radius: 50%;
   transition: 0.3s ease;
 }
 </style>
