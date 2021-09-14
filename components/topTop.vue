@@ -25,21 +25,18 @@
       </div>
       <div class="right-wrap">
         <div class="carousel-nav">
-          <div class="carousel-outer">
-            <hooper :settings="hooperSettings">
-              <slide 
-                v-for="(slide, idx) in slides"
-                :key="idx"
-                class="carousel-inner"
-              >
-                <a :href="links[idx].src" >
-                  <img :src="slides[idx].img"/>
-                </a>
-              </slide>
-              <hooper-navigation slot="hooper-addons"></hooper-navigation>
-              <hooper-pagination slot="hooper-addons"></hooper-pagination>
-            </hooper>
-          </div>
+          <hooper :settings="hooperSettings">
+            <slide 
+              v-for="(slide, idx) in slides"
+              :key="idx"
+            >
+              <a :href="links[idx].src" >
+                <img :src="slides[idx].img"/>
+              </a>
+            </slide>
+            <hooper-navigation slot="hooper-addons"></hooper-navigation>
+            <hooper-pagination slot="hooper-addons"></hooper-pagination>
+          </hooper>
         </div>
       </div>
     </div>
@@ -99,6 +96,7 @@ export default {
   background: white;
   color: gray;
   display: flex;
+  width: cal(1920px);
   height: cal(100vh - 80px/* ヘッダーの高さ */);
   font-family: 'Inter';
 }
@@ -151,7 +149,7 @@ export default {
   text-decoration: none;
   color: gray;
   border: solid gray;
-  border-width: 0.1vw;
+  border-width: min(0.1vw, 2px);
   border-radius: 50px;
   display: inline;
   white-space: nowrap;
@@ -160,48 +158,37 @@ export default {
   opacity: 0.5;
   transition: 0.3s ease;
 }
+</style>
+<style scoped>
 /* カルーセル */
 .carousel-nav {
   margin: min(50px, 4vw) min(100px, 5.3vw) min(100px, 5.3vw) min(100px, 5.3vw);
   width: min(900px, 47vw);
   height: min(700px, 37vw);
   border-radius: 25px/25px;
+  box-shadow: 6px 6px 6px lightgray;
   background: transparent;
 }
-.carousel-outer {
-  width: min(900px, 47vw);
-  height: min(700px, 37vw);
-  border-radius: 25px/25px;
-  box-shadow: 8px 6px 6px lightgray;
-  margin: 0 auto;
-  text-align: center;
+*:focus {
+  outline: none;
 }
-.carousel-inner {
-  position: relative;
-  width: min(900px, 47vw);
-  height: min(700px, 37vw);
-  display: inline-block;
-}
-.carousel-inner img {
-  width: min(900px, 47vw);
-  height: min(700px, 37vw);
-  border-radius: 25px/25px;
-  border: solid 1px rgb(200, 200, 255);
-  object-fit: cover;
-}
-</style>
-<style scoped>
 .hooper {
   margin: 0;
   padding: 0;
   width: min(900px, 47vw);
   height: min(700px, 37vw);
+  display: inline-block;
+  position: relative;
   border-radius: 25px/25px;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-*:focus {
-  outline: none;
+.hooper img {
+  width: min(900px, 47vw);
+  height: min(700px, 37vw);
+  border-radius: 25px/25px;
+  border: solid 1px rgb(200, 200, 255);
+  object-fit: cover;
 }
 ::v-deep .hooper-list {
   border-radius: 25px/25px;
