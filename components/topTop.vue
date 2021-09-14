@@ -200,6 +200,9 @@ export default {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
+*:focus {
+  outline: none;
+}
 ::v-deep .hooper-list {
   border-radius: 25px/25px;
 }
