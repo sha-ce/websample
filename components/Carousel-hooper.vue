@@ -96,7 +96,8 @@ export default {
 }
 </style>
 
-<style>/* scopedされてないけどそうじゃないとデフォルトのままなんだ */
+
+<style scoped>
 .hooper {
   margin: 0;
   padding: 0;

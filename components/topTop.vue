@@ -163,11 +163,10 @@ export default {
 /* カルーセル */
 .carousel-nav {
   margin: min(50px, 4vw) min(100px, 5.3vw) min(100px, 5.3vw) min(100px, 5.3vw);
-  background: gray;
   width: min(900px, 47vw);
   height: min(700px, 37vw);
   border-radius: 25px/25px;
-  box-shadow: 8px 6px 6px lightgray;
+  background: transparent;
 }
 .carousel-outer {
   width: min(900px, 47vw);
@@ -176,7 +175,6 @@ export default {
   box-shadow: 8px 6px 6px lightgray;
   margin: 0 auto;
   text-align: center;
-  background: white;
 }
 .carousel-inner {
   position: relative;
@@ -192,21 +190,23 @@ export default {
   object-fit: cover;
 }
 </style>
-<style>/* scopedされてないけどそうじゃないとデフォルトのままなんだ */
+<style scoped>
 .hooper {
   margin: 0;
   padding: 0;
   width: min(900px, 47vw);
   height: min(700px, 37vw);
   border-radius: 25px/25px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-.hooper-list {
+::v-deep .hooper-list {
   border-radius: 25px/25px;
 }
-.hooper-pagination {
+::v-deep .hooper-pagination {
   bottom: -30px;
 }
-.hooper-indicator {
+::v-deep .hooper-indicator {
   margin: 0 20px;
   padding: 0;
   width: 12px;
@@ -215,25 +215,25 @@ export default {
   background: gray;
   opacity: 0.3;
 }
-.hooper-indicator:hover, .hooper-indicator .is-active {
+::v-deep .hooper-indicator:hover, .hooper-indicator.is-active {
   background: gray;
   opacity: 0.6;
   transition: 0.3s ease;
 }
-.hooper-indicator.is-active {
+::v-deep .hooper-indicator.is-active {
   background: gray;
   opacity: 0.9;
 }
-.hooper-next, .hooper-prev {
+::v-deep .hooper-next, ::v-deep .hooper-prev {
   margin: 10px;
   padding: 5px;
-  background: lightgray;
+  background: transparent;
   opacity: 0.2;
   border-radius: 50%;
 }
-.hooper-next:hover, .hooper-prev:hover {
+::v-deep .hooper-next:hover, ::v-deep .hooper-prev:hover {
   margin: 10px;
-  background: lightgray;
+  background: white;
   opacity: 0.5;
   border-radius: 50%;
   transition: 0.3s ease;
