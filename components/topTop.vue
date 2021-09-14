@@ -80,7 +80,7 @@ export default {
         infiniteScroll: true,
         centerMode: true,
         keysControl: false,
-        autoPlay: true,
+        autoPlay: false,
         playSpeed: 5000,
         transition: 800
       },
@@ -182,6 +182,9 @@ export default {
   border-radius: 25px/25px;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.hooper * {
+  box-sizing: unset;
 }
 .hooper img {
   width: min(900px, 47vw);
