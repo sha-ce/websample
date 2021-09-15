@@ -45,7 +45,6 @@
 </template>
 
 <script>
-/* カルーセルモジュールのインポート */
 import { 
   Hooper,
   Slide,
@@ -103,14 +102,15 @@ export default {
   background: white;
   color: gray;
   display: flex;
-  width: calc(1920px - 17px);
+  max-width: 1920px;
+  width: 1903px;
   height: calc(100vh - 80px/* ヘッダーの高さ */);
-  font-family: 'Inter', 'Noto Sans JP';
+  font-family: 'Inter', '游ゴシック';
 }
 /* トップタイトル */
 .top-title {
   margin: 0;
-  padding: min(50px, 4vw) min(40px, 3.8vw) min(120px, 6.5vw) min(100px, 5.3vw);
+  padding: min(50px, 4vw) min(40px, 3.8vw) min(100px, 5.3vw) min(100px, 5.3vw);
 }
 .top-title-text {
   cursor: pointer;
@@ -130,7 +130,7 @@ export default {
 .top-news-nav {
   margin: 0;
   padding: min(40px, 4vw) min(40px, 3.8vw) min(20px, 2vw) min(70px, 4.5vw);
-  box-shadow: 1px 1px 5px 2px lightgray;
+  box-shadow: 0 0 8px #00000029;
   border-radius: 0 20px 20px 0;
 }
 .top-news-flex-wrap {
@@ -141,10 +141,10 @@ export default {
   margin: 0;
   padding: 0;
   width: 70%;
-  font-size: min(30px, 3.5vw);
+  font-size: min(32px, 1.7vw);
 }
 .all-news-link {
-  font-size: min(25px, 2.5vw);
+  font-size: min(24px, 1.25vw);
   text-align: right;
 }
 .all-news-link a {
@@ -153,11 +153,11 @@ export default {
 .top-news {
   margin: 0;
   padding: min(50px, 4vw) min(30px, 1.5vw);
-  font-size: min(23px, 2.5vw);
+  font-size: min(24px, 1.25vw);
 }
 .top-news a {
   margin: 0;
-  font-family: 'Noto Sans JP';
+  font-family: '游ゴシック';
   padding: min(20px, 2vw) min(40px, 3.8vw);
   text-decoration: none;
   color: gray;
@@ -173,11 +173,11 @@ export default {
 }
 /* カルーセル */
 .carousel-nav {
-  margin: min(50px, 4vw) min(100px, 5.3vw) min(100px, 5.3vw) min(100px, 5.3vw);
-  width: min(900px, 47vw);
-  height: min(700px, 37vw);
-  border-radius: 25px/25px;
-  box-shadow: 6px 6px 6px lightgray;
+  margin: min(60px, 3.1vw) min(80px, 4.2vw) min(100px, 5.3vw) min(90px, 4.7vw);
+  width: min(950px, 50vw);
+  height: min(720px, 37.5vw);
+  border-radius: 20px;
+  box-shadow: 8px 8px 8px #00000029;
   background: transparent;
 }
 *:focus {
@@ -196,24 +196,24 @@ export default {
 .hooper img {
   margin: 0;
   padding: 0;
-  width: min(900px, 47vw);
-  height: min(700px, 37vw);
-  border-radius: 25px/25px;
+  width: min(950px, 50vw);
+  height: min(720px, 37.5vw);
+  border-radius: 20px;
   object-fit: cover;
 }
 ::v-deep .hooper-list {
   margin: 0;
   padding: 0;
-  border-radius: 25px/25px;
+  border-radius: 20px;
 }
 ::v-deep .hooper-pagination {
-  bottom: -50px;
+  bottom: max(-50px, -6vw);
 }
 ::v-deep .hooper-indicator {
-  margin: 0 min(20px, 2vw);
+  margin: 0 min(20px, 1.5vw);
   padding: 0;
-  width: min(12px, 1.6vw);
-  height: min(12px, 1.6vw);
+  width: min(16px, 1vw);
+  height: min(16px, 1vw);
   border-radius: 50%;
   background: gray;
   opacity: 0.3;
