@@ -112,7 +112,7 @@ export default {
 }
 .top-title-text {
   cursor: pointer;
-  font-size: min(120px, 8vw);
+  font-size: clamp(70px, 8vw, 120px);
   font-weight: 800;
   display: inherit;
   display: flex;
@@ -140,10 +140,10 @@ export default {
   margin: 0;
   padding: 0;
   width: 70%;
-  font-size: min(32px, 1.7vw);
+  font-size: clamp(16px, 1.7vw, 32px);
 }
 .all-news-link {
-  font-size: min(24px, 1.25vw);
+  font-size: clamp(12px, 1.25vw, 24px);
   text-align: right;
 }
 .all-news-link a {
@@ -152,7 +152,7 @@ export default {
 .top-news {
   margin: 0;
   padding: min(50px, 4vw) min(30px, 1.5vw);
-  font-size: min(24px, 1.25vw);
+  font-size: clamp(10px, 1.25vw, 24px);
 }
 .top-news a {
   margin: 0;
