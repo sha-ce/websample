@@ -94,8 +94,8 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap');
 .wrap {
   margin: 0;
   padding: 80px/*ヘッダーの高さ*/ 0 50px 0;
@@ -103,16 +103,17 @@ export default {
   color: gray;
   display: flex;
   height: calc(100vh - 80px/* ヘッダーの高さ */);
-  font-family: 'Inter', '游ゴシック';
+  font-family: 'Inter', 'Noto Sans JP';
 }
 /* トップタイトル */
 .top-title {
   margin: 0;
-  padding: min(50px, 4vw) min(40px, 3.8vw) min(100px, 5.3vw) min(100px, 5.3vw);
+  padding: min(50px, 4vw) min(40px, 3.8vw) min(100px, 5.3vw) min(90px, 4.7vw);
 }
 .top-title-text {
   cursor: pointer;
   font-size: min(120px, 8vw);
+  font-weight: 800;
   display: inherit;
   display: flex;
 }
@@ -155,8 +156,8 @@ export default {
 }
 .top-news a {
   margin: 0;
-  font-family: '游ゴシック';
   padding: min(20px, 2vw) min(40px, 3.8vw);
+  font-weight: 400;
   text-decoration: none;
   color: gray;
   border: solid gray;
@@ -171,7 +172,7 @@ export default {
 }
 /* カルーセル */
 .carousel-nav {
-  margin: min(60px, 3.1vw) min(80px, 4.2vw) min(100px, 5.3vw) min(90px, 4.7vw);
+  margin: min(60px, 3.1vw) min(80px, 4.2vw) min(100px, 5.3vw) min(80px, 4.2vw);
   width: min(950px, 50vw);
   height: min(720px, 37.5vw);
   border-radius: 20px;
