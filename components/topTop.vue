@@ -31,7 +31,7 @@
               v-for="(slide, idx) in slides"
               :key="idx"
             >
-              <a :href="slideLinks[idx].src" >
+              <a :href="slides[idx].link" >
                 <img :src="slides[idx].img"/>
               </a>
             </slide>
@@ -65,18 +65,11 @@ export default {
       newsDate: '2021.9.30',
       news: 'オフィシャルサイト更新！！',
       slides: [
-        { img: '/carousel_1.png' },
-        { img: '/carousel_2.png' },
-        { img: '/carousel_3.png' },
-        { img: '/carousel_4.png' },
-        { img: '/carousel_5.png' }
-      ],
-      slideLinks: [
-        { src: '#1' },
-        { src: '#2' },
-        { src: '#3' },
-        { src: '#4' },
-        { src: '#5' },
+        { link: '#1', img: '/carousel_1.png' },
+        { link: '#2', img: '/carousel_2.png' },
+        { link: '#3', img: '/carousel_3.png' },
+        { link: '#4', img: '/carousel_4.png' },
+        { link: '#5', img: '/carousel_5.png' }
       ],
       allNewsLink: '#allnews',
       topNewsLink: '#topnews',
@@ -112,7 +105,7 @@ export default {
 }
 .top-title-text {
   cursor: pointer;
-  font-size: clamp(70px, 8vw, 120px);
+  font-size: clamp(60px, 8vw, 120px);
   font-weight: 800;
   display: inherit;
   display: flex;
