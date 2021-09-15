@@ -94,10 +94,22 @@ export default {
   padding: 80px/*ヘッダーの高さ*/ 0 50px 0;
   background: white;
   color: gray;
-  display: flex;
   height: calc(100vh - 80px/* ヘッダーの高さ */);
   font-family: 'Inter', 'Noto Sans JP';
 }
+/* スマホより大 */
+@media screen and (min-width: 481px) {
+  .wrap {
+    display: flex;
+  }
+}
+/* スマホ幅 */
+@media screen and (max-width: 480px) {
+  .wrap {
+    display: inherit;
+  }
+}
+
 /* トップタイトル */
 .top-title {
   margin: 0;
@@ -118,6 +130,7 @@ export default {
   color: #ddddff;
   transition: 0.8s ease;
 }
+
 /* トップニュース */
 .top-news-nav {
   margin: 0;
@@ -163,11 +176,12 @@ export default {
   opacity: 0.5;
   transition: 0.3s ease;
 }
+
 /* カルーセル */
 .carousel-nav {
   margin: min(60px, 3.1vw) min(80px, 4.2vw) min(100px, 5.3vw) min(80px, 4.2vw);
-  width: min(950px, 50vw);
-  height: min(720px, 37.5vw);
+  width: clamp(340px, 50vw, 950px);
+  height: clamp(200px, 37.5vw, 720px);
   border-radius: 20px;
   box-shadow: 8px 8px 8px #00000029;
   background: transparent;
@@ -188,8 +202,8 @@ export default {
 .hooper img {
   margin: 0;
   padding: 0;
-  width: min(950px, 50vw);
-  height: min(720px, 37.5vw);
+  width: clamp(340px, 50vw, 950px);
+  height: clamp(200px, 37.5vw, 720px);
   border-radius: 20px;
   object-fit: cover;
 }
