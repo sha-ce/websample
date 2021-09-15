@@ -18,7 +18,7 @@
           </div>
           <div class="top-news">
             <a :href="topNewsLink">
-              {{ newsDate + ' ' + news }}
+              {{ topNews.date + ' ' + topNews.content }}
             </a>
           </div>
         </div>
@@ -62,8 +62,7 @@ export default {
   },
   data() {
     return {
-      newsDate: '2021.9.30',
-      news: 'オフィシャルサイト更新！！',
+      topNews: { date: '2021.9.30', content: 'オフィシャルサイト更新！！' },
       slides: [
         { link: '#1', img: '/carousel_1.png' },
         { link: '#2', img: '/carousel_2.png' },
@@ -97,14 +96,14 @@ export default {
   height: calc(100vh - 80px/* ヘッダーの高さ */);
   font-family: 'Inter', 'Noto Sans JP';
 }
-/* スマホより大 */
-@media screen and (min-width: 481px) {
+/* タブレットより大 */
+@media screen and (min-width: 769px) {
   .wrap {
     display: flex;
   }
 }
-/* スマホ幅 */
-@media screen and (max-width: 480px) {
+/* タブレット幅 */
+@media screen and (max-width: 768px) {
   .wrap {
     display: inherit;
   }
