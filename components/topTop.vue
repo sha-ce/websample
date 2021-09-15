@@ -102,8 +102,6 @@ export default {
   background: white;
   color: gray;
   display: flex;
-  max-width: 1920px;
-  width: 1903px;
   height: calc(100vh - 80px/* ヘッダーの高さ */);
   font-family: 'Inter', '游ゴシック';
 }
