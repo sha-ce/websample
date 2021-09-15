@@ -96,6 +96,9 @@ export default {
   height: calc(100vh - 80px/* ヘッダーの高さ */);
   font-family: 'Inter', 'Noto Sans JP';
 }
+.left-wrap {
+  width: clamp(360px, 45vw, 780px);
+}
 /* タブレットより大 */
 @media screen and (min-width: 769px) {
   .wrap {
