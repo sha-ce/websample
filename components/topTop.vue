@@ -140,7 +140,6 @@ export default {
 /* タブレット↓ */
 @media screen and (max-width: 768px) {
   .top-title {
-    width: 100%;
     padding: 2.5vw 4vw;
     display: flex;
     text-align: center;
