@@ -96,30 +96,28 @@ export default {
   height: calc(100vh - 80px/* ヘッダーの高さ */);
   font-family: 'Inter', 'Noto Sans JP';
 }
-.left-wrap {
-  width: clamp(360px, 45vw, 780px);
-}
-/* タブレットより大 */
+/* タブレット↑ */
 @media screen and (min-width: 769px) {
   .wrap {
     display: flex;
   }
 }
-/* タブレット幅 */
+/* タブレット↓ */
 @media screen and (max-width: 768px) {
   .wrap {
     display: inherit;
   }
 }
 
+/*               */
 /* トップタイトル */
+/*               */
 .top-title {
   margin: 0;
-  padding: min(50px, 4vw) min(40px, 3.8vw) min(100px, 5.3vw) min(90px, 4.7vw);
 }
 .top-title-text {
   cursor: pointer;
-  font-size: clamp(60px, 8vw, 120px);
+  font-size: min(6.5vw, 120px);
   font-weight: 800;
   display: inherit;
   display: flex;
@@ -132,14 +130,29 @@ export default {
   color: #ddddff;
   transition: 0.8s ease;
 }
-
-/* トップニュース */
-.top-news-nav {
-  margin: 0;
-  padding: min(40px, 4vw) min(40px, 3.8vw) min(20px, 2vw) min(70px, 4.5vw);
-  box-shadow: 0 0 8px #00000029;
-  border-radius: 0 20px 20px 0;
+/* タブレット↑ */
+@media screen and (min-width: 769px) {
+  .top-title {
+    padding: min(50px, 4vw) min(40px, 3.8vw) min(100px, 5.3vw) min(90px, 4.7vw);
+    display: inherit;
+  }
 }
+/* タブレット↓ */
+@media screen and (max-width: 768px) {
+  .top-title {
+    width: 100%;
+    padding: 2.5vw 4vw;
+    display: flex;
+    text-align: center;
+  }
+  .top-title-text {
+    margin: 0 5px;
+  }
+}
+
+/*               */
+/* トップニュース */
+/*               */
 .top-news-flex-wrap {
   display: flex;
   vertical-align: middle;
@@ -178,15 +191,28 @@ export default {
   opacity: 0.5;
   transition: 0.3s ease;
 }
+/* タブレット↑ */
+@media screen and (min-width: 769px) {
+  .top-news-nav {
+    margin: 0;
+    padding: min(40px, 4vw) min(40px, 3.8vw) min(20px, 2vw) min(70px, 4.5vw);
+    box-shadow: 0 0 8px #00000029;
+    border-radius: 0 20px 20px 0;
+  }
+}
+/* タブレット↓ */
+@media screen and (max-width: 768px) {
+  .top-news-nav {
+    display: none;
+  }
+}
 
+/*           */
 /* カルーセル */
+/*           */
 .carousel-nav {
-  margin: min(60px, 3.1vw) min(80px, 4.2vw) min(100px, 5.3vw) min(80px, 4.2vw);
-  width: clamp(340px, 50vw, 950px);
-  height: clamp(200px, 37.5vw, 720px);
-  border-radius: 20px;
-  box-shadow: 8px 8px 8px #00000029;
   background: transparent;
+  box-shadow: 8px 8px 8px #00000029;
 }
 *:focus {
   outline: none;
@@ -204,15 +230,11 @@ export default {
 .hooper img {
   margin: 0;
   padding: 0;
-  width: clamp(340px, 50vw, 950px);
-  height: clamp(200px, 37.5vw, 720px);
-  border-radius: 20px;
   object-fit: cover;
 }
 ::v-deep .hooper-list {
   margin: 0;
   padding: 0;
-  border-radius: 20px;
 }
 ::v-deep .hooper-pagination {
   bottom: max(-50px, -6vw);
@@ -238,16 +260,57 @@ export default {
 }
 ::v-deep .hooper-next,
 ::v-deep .hooper-prev {
-  margin: 0 10px;
-  padding: 5px;
-  background: ghostwhite;
+  background: white;
   opacity: 0.2;
   border-radius: 50%;
 }
 ::v-deep .hooper-next:hover,
 ::v-deep .hooper-prev:hover {
-  background: ghostwhite;
+  background: white;
   opacity: 0.5;
   transition: 0.3s ease;
+}
+/* タブレット↑ */
+@media screen and (min-width: 769px) {
+  .carousel-nav {
+    margin: min(60px, 3.1vw) min(80px, 4.2vw) min(100px, 5.3vw) min(80px, 4.2vw);
+    width: min(50vw, 950px);
+    height: min(37.5vw, 720px);
+  }
+  .hooper img {
+    width: min(50vw, 950px);
+    height: min(37.5vw, 720px);
+    border-radius: 20px;
+  }
+  ::v-deep .hooper-list {
+    border-radius: 20px;
+  }
+  ::v-deep .hooper-next,
+  ::v-deep .hooper-prev {
+    margin: 0 10px;
+    padding: 5px;
+  }
+}
+/* タブレット↓ */
+@media screen and (max-width: 768px) {
+  .carousel-nav {
+    margin: auto;
+    width: min(88vw, 680px);
+    height: min(88vw, 680px);
+    border-radius: 12px;
+  }
+  .hooper img {
+    width: min(88vw, 680px);
+    height: min(88vw, 680px);
+    border-radius: 12px;
+  }
+  ::v-deep .hooper-list {
+    border-radius: 12px;
+  }
+  ::v-deep .hooper-next,
+  ::v-deep .hooper-prev {
+    margin: 0 10px;
+    padding: 0;
+  }
 }
 </style>
