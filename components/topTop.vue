@@ -107,7 +107,6 @@ export default {
   padding: 80px/*ヘッダーの高さ*/ 0 50px 0;
   background: white;
   color: gray;
-  height: calc(100vh - 80px/* ヘッダーの高さ */);
   font-family: 'Inter', 'Noto Sans JP';
 }
 /* タブレット↑ */
