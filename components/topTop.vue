@@ -8,8 +8,8 @@
           <div class="top-title-text"><div class="top-title-text-c">C</div>omputer</div>
           <div class="top-title-text"><div class="top-title-text-c">C</div>lub</div>
         </div>
-        <!-- トップニュース -->
-        <div class="top-news-nav">
+        <!-- トップニュース(pc) -->
+        <div class="top-news-nav pc">
           <div class="top-news-flex-wrap">
             <div class="top-news-title">お知らせ</div>
             <div class="all-news-link">
@@ -38,6 +38,20 @@
             <hooper-navigation slot="hooper-addons"></hooper-navigation>
             <hooper-pagination slot="hooper-addons"></hooper-pagination>
           </hooper>
+        </div>
+        <!-- トップニュース(sp) -->
+        <div class="top-news-nav sp">
+          <div class="top-news-flex-wrap">
+            <div class="top-news-title">お知らせ</div>
+            <div class="all-news-link">
+              <a :href="allNewsLink">一覧を見る</a>
+            </div>
+          </div>
+          <div class="top-news">
+            <a :href="topNewsLink">
+              {{ topNews.date + ' ' + topNews.content }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -109,9 +123,9 @@ export default {
   }
 }
 
-/*               */
-/* トップタイトル */
-/*               */
+/*                 */
+/*  トップタイトル  */
+/*                 */
 .top-title {
   margin: 0;
 }
@@ -149,9 +163,12 @@ export default {
   }
 }
 
-/*               */
-/* トップニュース */
-/*               */
+/*                 */
+/*  トップニュース  */
+/*                 */
+.top-news-nav {
+  box-shadow: 0 0 8px #00000029;
+}
 .top-news-flex-wrap {
   display: flex;
   vertical-align: middle;
@@ -160,10 +177,10 @@ export default {
   margin: 0;
   padding: 0;
   width: 70%;
-  font-size: clamp(16px, 1.7vw, 32px);
+  font-size: min(3vw, 32px);
 }
 .all-news-link {
-  font-size: clamp(12px, 1.25vw, 24px);
+  font-size: min(2vw, 24px);
   text-align: right;
 }
 .all-news-link a {
@@ -172,7 +189,7 @@ export default {
 .top-news {
   margin: 0;
   padding: min(50px, 4vw) min(30px, 1.5vw);
-  font-size: clamp(10px, 1.25vw, 24px);
+  font-size: min(2vw, 24px);
 }
 .top-news a {
   margin: 0;
@@ -195,20 +212,28 @@ export default {
   .top-news-nav {
     margin: 0;
     padding: min(40px, 4vw) min(40px, 3.8vw) min(20px, 2vw) min(70px, 4.5vw);
-    box-shadow: 0 0 8px #00000029;
     border-radius: 0 20px 20px 0;
+  }
+  .sp {
+    display: none;
   }
 }
 /* タブレット↓ */
 @media screen and (max-width: 768px) {
   .top-news-nav {
+    margin-top: 60px;
+    padding: 2vw 4vw;
+    width: min(65vw, 500px);
+    border-radius: 0 12px 12px 0;
+  }
+  .pc {
     display: none;
   }
 }
 
-/*           */
-/* カルーセル */
-/*           */
+/*             */
+/*  カルーセル  */
+/*             */
 .carousel-nav {
   background: transparent;
   box-shadow: 8px 8px 8px #00000029;
@@ -275,6 +300,7 @@ export default {
     margin: min(60px, 3.1vw) min(80px, 4.2vw) min(100px, 5.3vw) min(80px, 4.2vw);
     width: min(50vw, 950px);
     height: min(37.5vw, 720px);
+    border-radius: 20px;
   }
   .hooper img {
     width: min(50vw, 950px);
