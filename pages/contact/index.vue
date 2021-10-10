@@ -94,7 +94,7 @@ html, body {
 ,.contact-form-input textarea {
   width: 100%;
   background: #eeeeee;
-  border: none;
+  border: solid 1px #eeeeee;
   border-radius: 8px;
   font-size: 40px;
   color: gray;
@@ -102,8 +102,7 @@ html, body {
 }
 .contact-form-input input:focus
 ,.contact-form-input textarea:focus {
-  outline: solid 1px gray;
-  border-radius: 8px;
+  border: solid 1px gray;
 }
 .message textarea {
   resize: none;
