@@ -1,25 +1,24 @@
 <template>
-  <div>
     <div class="wrap">
       <div class="left-wrap">
         <!-- トップタイトル(Composite Computer Club) -->
         <div class="top-title">
-          <div class="top-title-text"><div class="top-title-text-c">C</div>omposite</div>
-          <div class="top-title-text"><div class="top-title-text-c">C</div>omputer</div>
-          <div class="top-title-text"><div class="top-title-text-c">C</div>lub</div>
+          <div class="top-title-text">Composite</div>
+          <div class="top-title-text">Computer</div>
+          <div class="top-title-text">Club</div>
         </div>
         <!-- トップニュース(pc) -->
         <div class="top-news-nav pc">
           <div class="top-news-flex-wrap">
             <div class="top-news-title">お知らせ</div>
             <div class="all-news-link">
-              <a :href="allNewsLink">一覧を見る</a>
+              <nuxt-link to="/news">一覧を見る</nuxt-link>
             </div>
           </div>
           <div class="top-news">
-            <a :href="topNewsLink">
-              {{ topNews.date + ' ' + topNews.content }}
-            </a>
+            <nuxt-link to='/news/${news.id}'>
+              {{ news.date + ' ' + news.content }}
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -31,9 +30,9 @@
               v-for="(slide, idx) in slides"
               :key="idx"
             >
-              <a :href="slides[idx].link" >
+              <nuxt-link to="slides[idx].link">
                 <img :src="slides[idx].img"/>
-              </a>
+              </nuxt-link>
             </slide>
             <hooper-navigation slot="hooper-addons"></hooper-navigation>
             <hooper-pagination slot="hooper-addons"></hooper-pagination>
@@ -44,18 +43,17 @@
           <div class="top-news-flex-wrap">
             <div class="top-news-title">お知らせ</div>
             <div class="all-news-link">
-              <a :href="allNewsLink">一覧を見る</a>
+              <nuxt-link to="/news">一覧を見る</nuxt-link>
             </div>
           </div>
           <div class="top-news">
-            <a :href="topNewsLink">
-              {{ topNews.date + ' ' + topNews.content }}
-            </a>
+            <nuxt-link to='/news/${news.id}'>
+              {{ news.date + ' ' + news.content }}
+            </nuxt-link>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -76,7 +74,11 @@ export default {
   },
   data() {
     return {
-      topNews: { date: '2021.9.30', content: 'オフィシャルサイト更新！！' },
+			news: {
+        id: 0,
+				date: '2021.9.30',
+				content: 'オフィシャルサイト更新！！'
+			},
       slides: [
         { link: '#1', img: '/carousel_1.png' },
         { link: '#2', img: '/carousel_2.png' },
@@ -84,8 +86,6 @@ export default {
         { link: '#4', img: '/carousel_4.png' },
         { link: '#5', img: '/carousel_5.png' }
       ],
-      allNewsLink: '#allnews',
-      topNewsLink: '#topnews',
       hooperSettings: {
         infiniteScroll: true,
         centerMode: true,
@@ -99,24 +99,30 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+}
 .wrap {
   margin: 0;
   padding: 80px/*ヘッダーの高さ*/ 0 50px 0;
   background: white;
   color: gray;
-  font-family: 'Inter', 'Noto Sans JP';
+  font-family: 'Inter', '游ゴシック';
+  justify-content: space-between;
+  max-width: 1920px;
 }
+
 /* タブレット↑ */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1001px) {
   .wrap {
     display: flex;
   }
 }
 /* タブレット↓ */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .wrap {
     display: inherit;
   }
@@ -129,29 +135,20 @@ export default {
   margin: 0;
 }
 .top-title-text {
-  cursor: pointer;
-  font-size: min(6.5vw, 120px);
+  font-size: min(120px, 6.5vw);
   font-weight: 800;
   display: inherit;
   display: flex;
 }
-.top-title-text-c {
-  color: #ddddff;
-  display: inline;
-}
-.top-title-text:hover {
-  color: #ddddff;
-  transition: 0.8s ease;
-}
 /* タブレット↑ */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1001px) {
   .top-title {
     padding: min(50px, 4vw) min(40px, 3.8vw) min(100px, 5.3vw) min(90px, 4.7vw);
     display: inherit;
   }
 }
 /* タブレット↓ */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .top-title {
     padding: 2.5vw 4vw;
     display: flex;
@@ -176,66 +173,72 @@ export default {
   margin: 0;
   padding: 0;
   width: 70%;
-  font-size: min(3vw, 32px);
+  font-size: min(32px, 3vw);
 }
 .all-news-link {
-  font-size: min(2vw, 24px);
+  font-size: min(24px, 2vw);
   text-align: right;
 }
 .all-news-link a {
-  color: gray;
+  color: $gray;
 }
 .top-news {
   margin: 0;
-  padding: min(50px, 4vw) min(30px, 1.5vw);
-  font-size: min(2vw, 24px);
+  padding: min(40px, 3vw) min(30px, 1.5vw);
 }
 .top-news a {
   margin: 0;
   padding: min(20px, 2vw) min(40px, 3.8vw);
-  font-weight: 400;
   text-decoration: none;
   color: gray;
   border: solid gray;
-  border-width: min(0.1vw, 2px);
+  border-width: min(2px, 0.1vw);
   border-radius: 50px;
-  display: inline;
   white-space: nowrap;
+  display: block;
+  width: 80%;
+  text-align: center;
 }
 .top-news a:hover, .all-news-link a:hover {
   opacity: 0.5;
   transition: 0.3s ease;
 }
 /* タブレット↑ */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1001px) {
   .top-news-nav {
     margin: 0;
     padding: min(40px, 4vw) min(40px, 3.8vw) min(20px, 2vw) min(70px, 4.5vw);
     border-radius: 0 20px 20px 0;
   }
+  .top-news a {
+  font-size: min(24px, 1.3vw);
+}
   .sp {
     display: none;
   }
 }
 /* タブレット↓ */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .top-news-nav {
     margin-top: min(8vw, 60px);
     padding: 2vw 4vw;
     width: min(65vw, 500px);
     border-radius: 0 12px 12px 0;
   }
+  .top-news a {
+  font-size: 2vw
+}
   .pc {
     display: none;
   }
 }
 
-/*             */
-/*  カルーセル  */
-/*             */
+/*                 */
+/*    カルーセル    */
+/*                 */
 .carousel-nav {
-  background: transparent;
   box-shadow: 8px 8px 8px #00000029;
+  background: transparent;
 }
 *:focus {
   outline: none;
@@ -294,9 +297,9 @@ export default {
   transition: 0.3s ease;
 }
 /* タブレット↑ */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1001px) {
   .carousel-nav {
-    margin: min(60px, 3.1vw) min(80px, 4.2vw) min(100px, 5.3vw) min(80px, 4.2vw);
+    margin: min(60px, 3.1vw) min(60px, 2.9vw) min(100px, 5.3vw) min(20px, 1vw);
     width: min(50vw, 950px);
     height: min(37.5vw, 720px);
     border-radius: 20px;
@@ -316,7 +319,7 @@ export default {
   }
 }
 /* タブレット↓ */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .carousel-nav {
     margin: auto;
     width: min(88vw, 680px);
