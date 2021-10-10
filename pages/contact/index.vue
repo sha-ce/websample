@@ -103,6 +103,7 @@ html, body {
 .contact-form-input input:focus
 ,.contact-form-input textarea:focus {
   outline: solid 1px gray;
+  border-radius: 8px;
 }
 .message textarea {
   resize: none;
