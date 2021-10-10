@@ -14,7 +14,7 @@
               <div class="home">
                 <a href="/">
                   <font-awesome-icon class="icon" icon="home" />
-                  C3について
+                  Home
                 </a>
               </div>
             </li>
@@ -64,6 +64,14 @@
                 <a href="#blog">
                   <font-awesome-icon class="icon" icon="home" />
                   ブログ
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="home">
+                <a href="/contact">
+                  <font-awesome-icon class="icon" icon="home" />
+                  お問い合わせ
                 </a>
               </div>
             </li>
