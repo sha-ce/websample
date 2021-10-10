@@ -99,7 +99,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
 * {
   margin: 0;
@@ -180,7 +180,7 @@ export default {
   text-align: right;
 }
 .all-news-link a {
-  color: $gray;
+  color: gray;
 }
 .top-news {
   margin: 0;
