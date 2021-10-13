@@ -3,84 +3,161 @@
     <Header/>
     <Menu/>
     <div class="contact">
+      <!-- title -->
       <div class="contact-title">
         お問い合わせ
       </div>
-      <div class="contact-form-wrap">
+      <!-- form -->
+      <form 
+        class="contact-form-wrap"
+        method="post"
+        novalidate="true"
+        @submit.prevent
+      >
+        <!-- description -->
+        <div class="contact-form-description">
+          当サイトやC3へのお問い合わせ，ご希望などございましたら、以下のフォームよりご連絡ください。内容を確認しメールにて連絡致します。
+        </div>
+        <!-- name -->
         <div class="contact-form">
-          <div class="contact-form-text">
-            お名前
+          <div class="contact-form-text">お名前</div>
+          <div class="contact-form-input" :class="{'contact-form-input-error': nameError}">
+            <input v-model="name" type="text"/>
           </div>
-          <div class="contact-form-input">
-            <input id="name" type="text"/>
+          <div v-if="nameError" class="contact-form-error">
+            {{ nameComment }}
           </div>
         </div>
+        <!-- email -->
         <div class="contact-form">
-          <div class="contact-form-text">
-            メールアドレス
+          <div class="contact-form-text">メールアドレス</div>
+          <div class="contact-form-input" :class="{'contact-form-input-error': emailError}">
+            <input v-model="email" type="email"/>
           </div>
-          <div class="contact-form-input">
-            <input id="email" type="email"/>
+          <div v-if="emailError" class="contact-form-error">
+            {{ emailComment }}
           </div>
         </div>
+        <!-- contact -->
         <div class="contact-form">
-          <div class="contact-form-text">
-            お問い合わせ内容
+          <div class="contact-form-text">お問い合わせ内容</div>
+          <div class="contact-form-input" :class="{'contact-form-input-error': messageError}">
+            <textarea v-model="message"/>
           </div>
-          <div class="contact-form-input message">
-            <textarea id="message"/>
+          <div v-if="messageError" class="contact-form-error">
+            {{ messageComment }}
           </div>
         </div>
-        <div class="contact-form-post">
-          <button>送信</button>
+        <!-- button -->
+        <div class="contact-form-submit">
+          <button @click="checkForm">送信</button>
         </div>
-      </div>
+      </form>
     </div>
     <Footer/>
   </div>
 </template>
 
 <script>
-import Header from '../../components/Header.vue';
-import Menu from '../../components/Menu.vue';
-import Footer from '../../components/Footer.vue';
+import Header from '~/components/Header.vue';
+import Menu from '~/components/Menu.vue';
+import Footer from '~/components/Footer.vue';
 
 export default {
   components: { Header, Menu, Footer },
+  data() {
+    return {
+      // value
+      name: '',
+      email: '',
+      message: '',
+      // error
+      nameError : false,
+      emailError: false,
+      messageError: false,
+      // error message
+      nameComment: '*お名前を入力してください',
+      emailComment: '*メールアドレスを入力してください',
+      messageComment: '*お問い合わせ内容を入力してください'
+    }
+  },
+  methods: {
+    checkForm() {
+      // name
+      if(!this.name) {
+        this.nameError = true;
+      } else {
+        this.nameError = false;
+      }
+      // email
+      if(!this.email) {
+        this.emailError = true;
+        this.emailComment = '*メールアドレスを入力してください';
+      } else if(!this.validEmail(this.email)) {
+        this.emailError = true;
+        this.emailComment = '*メールアドレスの形式で入力してください';
+      } else {
+        this.emailError = false;
+      }
+      // message
+      if(!this.message) {
+        this.messageError = true;
+      } else {
+        this.messageError = false;
+      }
+    },
+    validEmail(email) {
+      const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return regex.test(email);
+    }
+  }
 }
 </script>
-
-<style>
-html, body {
-  margin: 0;
-  padding: 0;
-}
-</style>
 
 <style scoped>
 *:focus {
   outline: none;
 }
 .contact {
+  max-width: 1920px;
   background: white;
   font-family: 'Inter', '游ゴシック';
   justify-content: center;
-  padding-top: 100px;
+  padding: 100px 0 50px 0;
 }
+/* title */
 .contact-title {
   font-size: 100px;
   color: gray;
-  margin: 0 0 50px 100px;
+  margin-left: min(5vw, 100px);
+  display: inline;
 }
+
+/* form */
 .contact-form-wrap {
-  width: 65%;
+  width: min(90vw, 1000px);
   text-align: center;
   margin: 30px auto;
+  padding: 50px 0;
+  border-radius: 30px;
+  box-shadow: 0 0 8px #00000029;
 }
+
+/* description */
+.contact-form-description {
+  width: 80%;
+  margin: 50px auto;
+  font-size: 22.4px;
+  text-align: left;
+}
+
+/* category */
 .contact-form {
-  margin: 30px 0;
+  width: 80%;
+  margin: min(5vw, 30px) auto;
 }
 .contact-form-text {
+  margin: 0 auto;
   width: 100%;
   font-size: 40px;
   color: gray;
@@ -90,39 +167,59 @@ html, body {
   width: 100%;
   text-align: center;
 }
-.contact-form-input input
-,.contact-form-input textarea {
-  width: 100%;
+.contact-form-input input,
+.contact-form-input textarea {
+  width: 95%;
   background: #eeeeee;
   border: solid 1px #eeeeee;
   border-radius: 8px;
-  font-size: 40px;
+  font-family: 'Inter', '游ゴシック';
+  font-size: 20px;
   color: gray;
-  padding: 10px 20px;
+  padding: 20px 2.5%;
 }
-.contact-form-input input:focus
-,.contact-form-input textarea:focus {
-  border: solid 1px gray;
+.contact-form-input input:focus,
+.contact-form-input textarea:focus {
+  border: solid 1px #4949ff;
 }
-.message textarea {
+.contact-form-input textarea {
   resize: none;
-  height: 300px;
-  text-align: initial;
-  white-space: normal;
+  height: min(30vw, 300px);
 }
-.contact-form-post {
+.contact-form-input textarea::-webkit-scrollbar {
+  display: none;
+}
+.contact-form-error {
+  margin: 0 auto;
+  width: 100%;
+  font-size: 14px;
+  color: #ff2244;
+  text-align: left;
+  font-weight: bold;
+}
+.contact-form-input-error input,
+.contact-form-input-error textarea {
+  border: solid 2px #ff2244;
+}
+.contact-form-input-error input:focus,
+.contact-form-input-error textarea:focus {
+  border: solid 2px #ff2244;
+}
+
+/* button */
+.contact-form-submit {
   text-align: center;
 }
-.contact-form-post button{
+.contact-form-submit button{
   font-size: 40px;
   color: gray;
   background: transparent;
   border: solid 2px gray;
   border-radius: 8px;
   cursor: pointer;
-  padding: 5px 50px;
+  padding: 5px min(5vw, 50px);
 }
-.contact-form-post button:hover{
+.contact-form-submit button:hover {
   color: white;
   background: gray;
   transition: 0.3s ease;
